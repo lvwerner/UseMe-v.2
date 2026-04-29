@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Me - Sistema de Agenda</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <span class="logo">USE.me</span>
+        <ul>
+            <li><a href="#" onclick="navegarPara('agenda'); return false;" id="nav-agenda" class="ativo">Agenda</a></li>
+            <li><a href="#" onclick="navegarPara('caderno'); return false;" id="nav-caderno">Caderno</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <!-- ======== AGENDA ======== -->
+        <section id="secao-agenda">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Minha Agenda</h2>
+                    <button onclick="abrirModal()">+ Novo Compromisso</button>
+                </div>
+
+                <!-- Filtros (RF02 + Escopo Creep) -->
+                <div class="filtros">
+                    <label>
+                        <input type="radio" name="filtro" value="todos" checked onchange="filtrar(this.value)"> Todos
+                    </label>
+                    <label>
+                        <input type="radio" name="filtro" value="pendente" onchange="filtrar(this.value)"> Pendentes
+                    </label>
+                    <label>
+                        <input type="radio" name="filtro" value="concluida" onchange="filtrar(this.value)"> Concluídos
+                    </label>
+                </div>
+
+                <ul id="lista-tarefas"></ul>
+                <p id="lista-vazia" class="vazio" style="display:none;">Nenhum compromisso cadastrado.</p>
+            </div>
+        </section>
+
+        <!-- ======== CADERNO ======== -->
+        <section id="secao-caderno" style="display:none;">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Caderno de Conteúdos</h2>
+                </div>
+
+                <div class="form-nota">
+                    <input type="text" id="nota-titulo" placeholder="Título (ex: Aula de Redes)" maxlength="80">
+                    <textarea id="nota-texto" rows="3" placeholder="Anotações, links, resumos..."></textarea>
+                    <button onclick="salvarNota()">Salvar Nota</button>
+                </div>
+
+                <div id="lista-notas" class="grade-notas"></div>
+                <p id="notas-vazias" class="vazio" style="display:none;">Nenhuma nota cadastrada.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ======== MODAL ======== -->
+    <div id="modal" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Novo Compromisso</h3>
+                <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+            </div>
+
+            <label for="ev-desc">Descrição *</label>
+            <input type="text" id="ev-desc" placeholder="Ex: Prova de Engenharia de Software" maxlength="120">
+
+            <label for="ev-data">Data</label>
+            <input type="date" id="ev-data">
+
+            <label for="ev-prioridade">Prioridade</label>
+            <select id="ev-prioridade">
+                <option value="Baixa">Baixa</option>
+                <option value="Média" selected>Média</option>
+                <option value="Alta">Alta</option>
+            </select>
+
+            <div class="modal-acoes">
+                <button class="btn-secundario" onclick="fecharModal()">Cancelar</button>
+                <button onclick="adicionarTarefa()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/tarefas.js"></script>
+    <script src="js/notas.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

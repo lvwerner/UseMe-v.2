@@ -1,0 +1,375 @@
+/* =============================================
+   USE ME - Estilos
+   Fábrica de Software - Univille 2026
+   ============================================= */
+
+:root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --primary: #4a90e2;
+    --text: #d0d0d0;
+    --text-dim: #666;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --warn: #f39c12;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* --- NAV --- */
+nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 52px;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a.ativo {
+    color: var(--primary);
+}
+
+/* --- LAYOUT --- */
+.container {
+    max-width: 860px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+/* --- CARD --- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-header h2 {
+    font-size: 16px;
+    color: var(--primary);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+/* --- BOTÕES --- */
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.btn-secundario {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+}
+
+.btn-secundario:hover {
+    border-color: var(--text-dim);
+    opacity: 1;
+}
+
+/* --- FILTROS --- */
+.filtros {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: var(--text-dim);
+}
+
+.filtros label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.filtros input[type="radio"] {
+    accent-color: var(--primary);
+}
+
+/* --- LISTA DE TAREFAS --- */
+ul#lista-tarefas {
+    list-style: none;
+}
+
+.item-tarefa {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    gap: 10px;
+}
+
+.item-tarefa:last-child {
+    border-bottom: none;
+}
+
+.item-tarefa.concluida .item-desc {
+    text-decoration: line-through;
+    color: var(--text-dim);
+}
+
+.item-esq {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.item-desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-meta {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.badge {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.badge-baixa  { background: #1a3a1a; color: var(--success); }
+.badge-media  { background: #3a2e0a; color: var(--warn); }
+.badge-alta   { background: #3a0a0a; color: var(--danger); }
+
+.item-acoes {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.item-acoes button {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.item-acoes button:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    opacity: 1;
+}
+
+.item-acoes .btn-del:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+}
+
+/* --- INPUTS --- */
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 9px 10px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    color: var(--primary);
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.btn-fechar {
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 22px;
+    padding: 0 4px;
+}
+
+.btn-fechar:hover {
+    color: var(--danger);
+    opacity: 1;
+}
+
+.modal-acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+/* --- NOTAS --- */
+.form-nota {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-nota button {
+    width: 100%;
+}
+
+.grade-notas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+    .grade-notas { grid-template-columns: 1fr; }
+}
+
+.nota-card {
+    background: #111;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--primary);
+    border-radius: 4px;
+    padding: 14px;
+}
+
+.nota-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.nota-card-header strong {
+    color: var(--primary);
+    font-size: 13px;
+    word-break: break-word;
+}
+
+.nota-card-header span {
+    cursor: pointer;
+    color: var(--text-dim);
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.nota-card-header span:hover {
+    color: var(--danger);
+}
+
+.nota-card p {
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* --- MISC --- */
+.vazio {
+    text-align: center;
+    color: var(--text-dim);
+    padding: 30px 0;
+    font-size: 13px;
+}
